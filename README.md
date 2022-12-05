@@ -1,2 +1,11 @@
-# psd-ii-2020-2
-Repositório com códigos da disciplina de PDS II, Engenharia Elétrica UFMG 2020/2
+# Repository for code PDS II
+
+## Basics
+
+Para compilar um arquivo, use
+g++ -std=c++14 -Wall ex15.cpp -o ex15.exe
+Depois rode o arquivo .exe
+
+## Object Oriented Programming
+
+## Good Practices

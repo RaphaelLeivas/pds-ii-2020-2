@@ -1,0 +1,58 @@
+----> CONFIGURANDO NOVO PROJETO
+
+1) Cria repositorios no Git Lab
+	- cria grupo
+	- cria subgrupos (ex firmware, software)
+	- cria projetos (firmware uc, frontend, etc)
+
+2) configura projeto no Stm Cube IDE
+	- escolhe os uC, configura etc
+	- cria as biliotecas (.c no src e .h no inc)
+		drivers: nivel mais baixo, ele tem funcoes que o controller usa
+			ex: heaterDriver.c, flowSensorDriver.c
+		controller: nivel medio, usa funcoes do driver
+			ex: temperatureDriver.c, volumeController.c, etc
+			o driver configura o componenete, o controller controla a
+								grandeza.
+		o codigo principal usa só o que está nos controllers.
+
+3) Metodologia
+	- planeja o projeto todo antes, começa pelos .h etc
+	- le o datasheet do sensor/modulo que vou começar a mexer
+		e ver o que precisa fazer (initialize, config, etc)
+	- depois começa a codar com protoboard e ve se funciona
+	- testes de cada modulo separado:
+		i) teste se só funciona mesmo
+		ii) teste se é BOM (calibrado, precisão, exatidão, etc)
+
+I) Dicas, boas práticas
+	- usa o VS Code para editar, usa o CubeIDE só para compilar e gravar
+	- extensão de documentação do VS Code: doxygen
+			/** no inicio para o arquivo todo
+			/** antes de cada funcao para só a funcao
+	- debugger: aprender a usar a do Cube IDE e do VS Code tbm, mas	
+		    durante o porjeto com o uC o debugger é do CubeIDE
+	- funções retornam erroCode_t
+	- cria arquivo hardwareProfile.h, e importa ele em todos os outros
+		nele fica typedef enum {
+		
+				} erroCode_t, e outras coisas globais
+	- usa outras enum para erros tbm, ledColor_t {LED_COLOR_YELLOW ...} etc
+	- cria tipos uint_8, uint_16, uint32, int32_t, etc com typedefs
+	- use DEFINES para variaveis gerais e de configuraçaõ etc
+		ex targetTemperature,
+		   tempoAquecimento, etc
+	- nomes de funcao sao precedidas pelo nome da biblioteca
+		ex HeaterDriver_Heat();
+		   DisplayController_PrintNumber();
+	- convenções em C
+		TUDO EM INGLES
+		nome de pasta: UpperCamelCase
+		nome de arquivo: lowerCamelCase
+		nome de função: UpperCamelCase
+		usa sufixo _p para ponteiro
+		usa sufico _t para typedef
+
+II) Documentação
+
+
